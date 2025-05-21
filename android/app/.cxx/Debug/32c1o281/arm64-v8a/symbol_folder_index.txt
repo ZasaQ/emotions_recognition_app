@@ -1,1 +1,0 @@
-D:\WSEI\emotions_recognition_app\build\app\intermediates\cxx\Debug\32c1o281\obj\arm64-v8a

@@ -1,2 +1,0 @@
-D:/WSEI/emotions_recognition_app/android/app/.cxx/Debug/32c1o281/x86_64/CMakeFiles/edit_cache.dir
-D:/WSEI/emotions_recognition_app/android/app/.cxx/Debug/32c1o281/x86_64/CMakeFiles/rebuild_cache.dir
