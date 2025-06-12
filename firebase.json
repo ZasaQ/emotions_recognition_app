@@ -1,1 +1,39 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"emotions-recognition-app","appId":"1:446194633842:android:c5e97ad58cbfdc5d5646eb","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"emotions-recognition-app","configurations":{"android":"1:446194633842:android:c5e97ad58cbfdc5d5646eb","ios":"1:446194633842:ios:088dc828bc990f355646eb"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "emotions-recognition-app",
+          "appId": "1:446194633842:android:c5e97ad58cbfdc5d5646eb",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "emotions-recognition-app",
+          "configurations": {
+            "android": "1:446194633842:android:c5e97ad58cbfdc5d5646eb",
+            "ios": "1:446194633842:ios:088dc828bc990f355646eb"
+          }
+        }
+      }
+    }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint",
+        "npm --prefix \"$RESOURCE_DIR\" run build"
+      ]
+    }
+  ]
+}
