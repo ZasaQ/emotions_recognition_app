@@ -56,7 +56,6 @@ void appLog(String message, {String? tag}) {
   );
 }
 
-
 void showAlertMessageWithTimer(final String message, int durationTime) {
   Timer timer = Timer(Duration(seconds: durationTime), () {
     Navigator.of(MyApp.navigatorKey.currentContext!).pop();
