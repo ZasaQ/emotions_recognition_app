@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'dart:developer' as developer;
 
 import 'package:emotions_recognition_app/main.dart';
@@ -169,6 +170,25 @@ class AuthenticationHandler {
         "$e",
         name: "AuthenticationServices -> signOutCurrentUser -> exception",
       );
+    }
+  }
+
+  void removeCurrentUser() async {
+    try {
+      final currentUser = FirebaseAuth.instance.currentUser;
+      String uid = currentUser!.uid;
+
+      final HttpsCallable callable = FirebaseFunctions.instance.httpsCallable('deleteFirebaseAuthUser');
+      await callable.call({'uid' : uid});
+
+      await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .delete();
+
+      await FirebaseAuth.instance.signOut();
+    } catch(e) {
+      appLog("Exception: $e");
     }
   }
 

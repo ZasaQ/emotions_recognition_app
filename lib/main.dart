@@ -3,10 +3,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:developer' as developer;
 
-import 'package:emotions_recognition_app/firebase_options.dart';
 import 'package:emotions_recognition_app/pages/home_page.dart';
 import 'package:emotions_recognition_app/pages/login_page.dart';
 import 'package:emotions_recognition_app/pages/register_page.dart';
+import 'package:emotions_recognition_app/pages/camera_page.dart';
+import 'package:emotions_recognition_app/firebase_options.dart';
 import 'package:emotions_recognition_app/theme_data.dart';
 import 'package:emotions_recognition_app/utilities.dart';
 
@@ -44,6 +45,8 @@ class _MyAppState extends State<MyApp> {
       return MaterialPageRoute(builder: (_) => const LoginPage());
     case "/register":
       return MaterialPageRoute(builder: (_) => const RegisterPage());
+    case "/camera":
+      return MaterialPageRoute(builder: (_) => const CameraPage());
     default:
       return MaterialPageRoute(
         builder: (_) => const Scaffold(body: Center(child: Text('Route not found'))),

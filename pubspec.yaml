@@ -43,6 +43,7 @@ dependencies:
   cloud_functions: ^5.5.1
   auto_route: ^10.0.1
   stack_trace: ^1.12.1
+  camera: ^0.10.6
 
 dev_dependencies:
   flutter_test:
