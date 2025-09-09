@@ -34,9 +34,6 @@ class FirestoreHandler {
 
   Future<void> deleteUserFromCollection({required String uid}) async {
     try {
-      final HttpsCallable callable = FirebaseFunctions.instance.httpsCallable('deleteFirebaseAuthUser');
-      await callable.call({'uid' : uid});
-
       await FirebaseFirestore.instance
         .collection('users')
         .doc(uid)
