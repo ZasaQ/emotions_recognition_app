@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:developer' as developer;
 
+import 'package:emotions_recognition_app/utilities.dart';
+
+
 class UserPage extends StatefulWidget {
   const UserPage({super.key});
 
@@ -15,6 +18,8 @@ class _UserPageState extends State<UserPage> {
   @override
   void initState() {
     super.initState();
+
+    appLog("Entering User page.");
 
     _userEmail = FirebaseAuth.instance.currentUser!.email!;
   }

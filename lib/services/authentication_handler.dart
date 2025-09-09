@@ -11,24 +11,18 @@ import 'package:emotions_recognition_app/utilities.dart';
 class AuthenticationHandler {
   void signUpWithEmail(String email, String password, String confirmPassword) async {
     if (email.isEmpty) {
-      developer.log(
-        name: "AuthenticationServices -> signUpWithEmail",
-        "Email can not be empty");
+      appLog("Email can not be empty");
       return showAlertMessage('Email can not be empty');
     }
 
     if (password.isEmpty || confirmPassword.isEmpty) {
-      developer.log(
-        name: "AuthenticationServices -> signUpWithEmail",
-        "Password can not be empty");
+      appLog("Password can not be empty");
       return showAlertMessage('Password can not be empty');
     }
 
     try {
       if (password != confirmPassword) {
-        developer.log(
-          name: "AuthenticationServices -> signUpWithEmail",
-          "Password must be the same");
+        appLog("Password must be the same");
         return showAlertMessage("Password must be the same");
       }
 
@@ -47,44 +41,32 @@ class AuthenticationHandler {
             'avatarImage': "",
           },
         );
-        developer.log(
-          name: "AuthenticationServices -> signUpWithEmail",
-          "User ${currentUser?.email} has been added to collection");
+        appLog("User ${currentUser?.email} has been added to collection");
       },
     );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
-        developer.log(
-          name: "AuthenticationServices -> signUpWithEmail -> FirebaseAuthException",
-          "$e");
+        appLog("$e");
         return showAlertMessage('The account already exists for that email');
       } else if (e.code == 'weak-password') {
-        developer.log(
-          name: "AuthenticationServices -> signUpWithEmail -> FirebaseAuthException",
-          "$e");
+        appLog("$e");
         return showAlertMessage('Provided password is too weak');
       }
 
       return showAlertMessage(e.code);
     } catch (e) {
-      developer.log(
-        name: "AuthenticationServices -> signUpWithEmail -> exception",
-        "$e");
+      appLog("Exception: $e");
     }
   }
 
   void signInWithEmail(String email, String password) async {
     if (email.isEmpty) {
-      developer.log(
-        name: "AuthenticationServices -> signInWithEmail ->",
-        "Email can not be empty");
+      appLog("Email can not be empty");
       return showAlertMessage('Email can not be empty');
     }
 
     if (password.isEmpty) {
-      developer.log(
-        name: "AuthenticationServices -> signInWithEmail ->",
-        "Password can not be empty");
+      appLog("Password can not be empty");
       return showAlertMessage('Password can not be empty');
     }
 
@@ -103,47 +85,32 @@ class AuthenticationHandler {
 
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-credential') {
-        developer.log(
-          name: "AuthenticationServices -> signInWithEmail -> FirebaseAuthException",
-          "$e");
+        appLog("$e");
         return showAlertMessage('Wrong email or password');
       } else if (e.code == 'user-not-found') {
-        developer.log(
-          name: "AuthenticationServices -> signInWithEmail -> FirebaseAuthException",
-          "$e");
+        appLog("$e");
         return showAlertMessage('No user found for that email.');
       } else if (e.code == 'wrong-password') {
-        developer.log(
-          name: "AuthenticationServices -> signInWithEmail -> FirebaseAuthException",
-          "$e");
+        appLog("$e");
         return showAlertMessage('Wrong password provided for that user.');
       } else if (e.code == 'email-already-in-use') {
-        developer.log(
-          name: "AuthenticationServices -> signInWithEmail -> FirebaseAuthException",
-          "$e");
+        appLog("$e");
         return showAlertMessage('The account already exists for that email.');
       }
 
       return showAlertMessage(e.code);
     } catch (e) {
-      developer.log(
-        name: "AuthenticationServices -> signInWithEmail -> exception",
-        "$e");
+      appLog("$e");
     }
 
-    developer.log(
-        name: "AuthenticationServices -> signInWithEmail",
-        "User has correctly logged in!");
+    appLog("User has correctly logged in!");
   }
 
   void signOutCurrentUser() async {
     final currentUser = FirebaseAuth.instance.currentUser;
 
     if (currentUser == null) {
-      developer.log(
-        "Current user is null",
-        name: "AuthenticationServices -> signOutCurrentUser",
-      );
+      appLog("Current user is null");
       return;
     }
 
@@ -153,23 +120,14 @@ class AuthenticationHandler {
           .doc(currentUser.uid)
           .update({'token': ""});
 
-      developer.log(
-        "User Token has been removed",
-        name: "AuthenticationServices -> signOutCurrentUser",
-      );
+      appLog("User Token has been removed");
 
       await FirebaseAuth.instance.signOut();
 
-      developer.log(
-        "User has been signed out",
-        name: "AuthenticationServices -> signOutCurrentUser",
-      );
+      appLog("User has been signed out");
 
     } catch (e) {
-      developer.log(
-        "$e",
-        name: "AuthenticationServices -> signOutCurrentUser -> exception",
-      );
+      appLog("$e");
     }
   }
 

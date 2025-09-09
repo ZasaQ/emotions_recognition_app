@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:emotions_recognition_app/services/authentication_handler.dart';
 import 'dart:developer' as developer;
 
+import 'package:emotions_recognition_app/utilities.dart';
+
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -22,9 +24,7 @@ class _RegisterPageState extends State<RegisterPage> {
   void initState() {
     super.initState();
 
-    developer.log(
-      name: "RegisterPage -> initState",
-      "Entering Register page.");
+    appLog("Entering Register page.");
   }
 
   @override

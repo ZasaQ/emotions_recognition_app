@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
 
+import 'package:emotions_recognition_app/utilities.dart';
 import 'package:emotions_recognition_app/services/authentication_handler.dart';
 
 
@@ -22,9 +23,7 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     super.initState();
 
-    developer.log(
-      name: "LoginPage -> initState",
-      "Entering Login page.");
+    appLog("Entering Login page.");
   }
 
   @override

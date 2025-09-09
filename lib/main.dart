@@ -90,16 +90,10 @@ class _CheckAuthenticationStatusState extends State<CheckAuthenticationStatus> {
 
         String? idToken = await user.getIdToken(true);
         appLog("idToken: $idToken");
-
-        developer.log(
-          name: "CheckAuthenticationStatus -> initState",
-          "Current user is NOT NULL, pushing Home page.");
+        appLog("Current user is NOT NULL, pushing Home page.");
       } else {
         MyApp.navigatorKey.currentState!.pushReplacementNamed("/login");
-
-        developer.log(
-          name: "CheckAuthenticationStatus -> initState",
-          "Current user is NULL, pushing Login page.");
+        appLog("Current user is NULL, pushing Login page.");
       }
     });
   }

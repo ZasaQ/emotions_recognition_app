@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:developer' as developer;
 
+import 'package:emotions_recognition_app/utilities.dart';
 import 'package:emotions_recognition_app/pages/camera_page.dart';
 import 'package:emotions_recognition_app/services/authentication_handler.dart';
 import 'package:emotions_recognition_app/services/firestore_handler.dart';
@@ -22,9 +23,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    developer.log(
-      name: "HomePage -> initState",
-      "Entering Home page.");
+    appLog("Entering Home page.");
   }
 
   @override

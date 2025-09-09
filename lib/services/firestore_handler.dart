@@ -23,9 +23,7 @@ class FirestoreHandler {
             'avatarImage': "",
           },
         ).then((value) => userCreated = true);
-        developer.log(
-          name: "AuthenticationServices -> addUserToCollection",
-          "User ${userCredential.user?.email} has been added to collection");
+        appLog("User ${userCredential.user?.email} has been added to collection");
       },
     );
 
@@ -39,13 +37,9 @@ class FirestoreHandler {
         .doc(uid)
         .delete();
 
-      developer.log(
-        name: "FirestoreHandler -> deleteUserFromCollection",
-        "User has been deleted correctly");
+      appLog("User has been deleted correctly");
     } on FirebaseAuthException catch (e) {
-      developer.log(
-        name: "AuthenticationServices -> deleteUserFromCollection -> FirebaseAuthException",
-        "$e");
+      appLog("$e");
     }
   }
 
