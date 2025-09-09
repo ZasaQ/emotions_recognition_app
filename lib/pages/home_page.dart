@@ -17,16 +17,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   AuthenticationHandler authHandler = AuthenticationHandler();
   FirestoreHandler firestoreHandler = FirestoreHandler();
-  String? _userEmail;
 
   @override
   void initState() {
     super.initState();
-
-    final user = FirebaseAuth.instance.currentUser;
-    setState(() {
-      _userEmail = user?.email ?? "No user signed in";
-    });
 
     developer.log(
       name: "HomePage -> initState",
@@ -39,20 +33,25 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(title: Text("Home Page")),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Center(child: Text('Logged in as ${_userEmail}')),
+        child: Center(
+          child: Column(
+            children: [
+              ElevatedButton(
+                onPressed: () => Navigator.pushNamed(context, '/user'),
+                child: Text("User Page"),
+              ),
 
-            ElevatedButton(
-              onPressed: () => authHandler.signOutCurrentUser(),
-              child: Text("Sign Out"),
-            ),
+              ElevatedButton(
+                onPressed: () => authHandler.signOutCurrentUser(),
+                child: Text("Sign Out"),
+              ),
 
-            ElevatedButton(
-              onPressed: () => authHandler.removeCurrentUser(),
-              child: Text("Delete Account"),
-            ),
-          ],
+              ElevatedButton(
+                onPressed: () => authHandler.removeCurrentUser(),
+                child: Text("Delete Account"),
+              ),
+            ],
+          )
         )
       ),
       floatingActionButton: FloatingActionButton(

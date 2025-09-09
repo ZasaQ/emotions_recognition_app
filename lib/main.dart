@@ -6,6 +6,7 @@ import 'dart:developer' as developer;
 import 'package:emotions_recognition_app/pages/home_page.dart';
 import 'package:emotions_recognition_app/pages/login_page.dart';
 import 'package:emotions_recognition_app/pages/register_page.dart';
+import 'package:emotions_recognition_app/pages/user_page.dart';
 import 'package:emotions_recognition_app/pages/camera_page.dart';
 import 'package:emotions_recognition_app/firebase_options.dart';
 import 'package:emotions_recognition_app/theme_data.dart';
@@ -45,6 +46,8 @@ class _MyAppState extends State<MyApp> {
       return MaterialPageRoute(builder: (_) => const LoginPage());
     case "/register":
       return MaterialPageRoute(builder: (_) => const RegisterPage());
+    case "/user":
+      return MaterialPageRoute(builder: (_) => const UserPage());
     case "/camera":
       return MaterialPageRoute(builder: (_) => const CameraPage());
     default:
