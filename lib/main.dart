@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'dart:developer' as developer;
 
 import 'package:emotions_recognition_app/pages/home_page.dart';
 import 'package:emotions_recognition_app/pages/login_page.dart';
@@ -11,6 +10,8 @@ import 'package:emotions_recognition_app/pages/camera_page.dart';
 import 'package:emotions_recognition_app/firebase_options.dart';
 import 'package:emotions_recognition_app/theme_data.dart';
 import 'package:emotions_recognition_app/utilities.dart';
+import 'package:emotions_recognition_app/pages/blaze_camera.dart';
+import 'package:emotions_recognition_app/pages/blaze_comparison.dart';
 
 
 void main() async {
@@ -50,6 +51,10 @@ class _MyAppState extends State<MyApp> {
       return MaterialPageRoute(builder: (_) => const UserPage());
     case "/camera":
       return MaterialPageRoute(builder: (_) => const CameraPage());
+    case "/blaze_camera":
+      return MaterialPageRoute(builder: (_) => const BlazeFacePage());
+    case "/blaze_comparison":
+      return MaterialPageRoute(builder: (_) => const BlazeFaceComparisonTest());
     default:
       return MaterialPageRoute(
         builder: (_) => const Scaffold(body: Center(child: Text('Route not found'))),

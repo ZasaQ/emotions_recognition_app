@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'dart:developer' as developer;
 
 import 'package:emotions_recognition_app/utilities.dart';
 import 'package:emotions_recognition_app/pages/camera_page.dart';
@@ -29,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Home Page")),
+      appBar: AppBar(title: const Text("Home Page")),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(
@@ -37,17 +35,27 @@ class _HomePageState extends State<HomePage> {
             children: [
               ElevatedButton(
                 onPressed: () => Navigator.pushNamed(context, '/user'),
-                child: Text("User Page"),
+                child: const Text("User Page"),
               ),
 
               ElevatedButton(
                 onPressed: () => authHandler.signOutCurrentUser(),
-                child: Text("Sign Out"),
+                child: const Text("Sign Out"),
               ),
 
               ElevatedButton(
                 onPressed: () => authHandler.removeCurrentUser(),
-                child: Text("Delete Account"),
+                child: const Text("Delete Account"),
+              ),
+
+              ElevatedButton(
+                onPressed: () => Navigator.pushNamed(context, '/blaze_camera'),
+                child: const Text("Blaze Camera"),
+              ),
+
+              ElevatedButton(
+                onPressed: () => Navigator.pushNamed(context, '/blaze_comparison'),
+                child: const Text("Blaze Comparison"),
               ),
             ],
           )
