@@ -47,16 +47,6 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () => authHandler.removeCurrentUser(),
                 child: const Text("Delete Account"),
               ),
-
-              ElevatedButton(
-                onPressed: () => Navigator.pushNamed(context, '/blaze_camera'),
-                child: const Text("Blaze Camera"),
-              ),
-
-              ElevatedButton(
-                onPressed: () => Navigator.pushNamed(context, '/blaze_comparison'),
-                child: const Text("Blaze Comparison"),
-              ),
             ],
           )
         )
